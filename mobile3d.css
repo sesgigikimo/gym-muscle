@@ -1,0 +1,32 @@
+/* 3D 頁手機/平板直向版(只覆寫小螢幕,桌機不受影響)。
+   放在各頁 inline <style> 之後 link,確保優先生效。 */
+@media (max-width: 820px) {
+  body { overflow-y: auto; overflow-x: hidden; }
+
+  /* 改為直向堆疊:上面 3D 畫布、下面資訊面板,整頁可捲動 */
+  .layout3d { display: block; height: auto; }
+  #canvas-wrap { height: 56vh; width: 100%; }
+  .panel-wrap {
+    height: auto; max-height: none; overflow-y: visible;
+    border-left: none; border-top: 1px solid var(--border);
+  }
+
+  /* 標題列縮一點,隱藏副標讓出空間,導覽列可橫向捲 */
+  header { flex-wrap: wrap; padding: 12px 16px !important; gap: 8px; }
+  header h1 { font-size: 17px; }
+  header p { display: none; }
+  .nav3d { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .nav3d a { flex: 0 0 auto; padding: 4px 0; }
+
+  /* 動作快選列:改單行橫向捲動,不再 wrap 蓋住模型 */
+  .ex-strip {
+    max-width: 92%; flex-wrap: nowrap; overflow-x: auto;
+    justify-content: flex-start; -webkit-overflow-scrolling: touch; padding-bottom: 2px;
+  }
+  .ex-strip button { flex: 0 0 auto; }
+
+  /* 觸控沒有 hover,操作說明用不到;圖例縮小 */
+  .hud { display: none; }
+  .legend3d { right: 10px; bottom: 10px; gap: 10px; font-size: 11px; }
+  .view-opt { top: 10px; left: 10px; font-size: 12px; padding: 5px 10px; }
+}
