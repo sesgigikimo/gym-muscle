@@ -15,9 +15,7 @@ body { overflow: hidden; }
 
 .loading { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: var(--text-dim); font-size: 14px; }
 
-.nav3d { display: flex; gap: 12px; font-size: 13px; }
-.nav3d a { color: var(--text-dim); text-decoration: none; }
-.nav3d a:hover, .nav3d a.active { color: var(--text); }
+/* .nav3d 樣式已移到共用的 style.css(2D/3D 各頁通用) */
 
 /* 右側面板:動作快選列(置頂)→ 資訊 */
 .panel-wrap { padding: 0; }

@@ -31,6 +31,11 @@ header {
 header h1 { font-size: 20px; font-weight: 700; }
 header p { font-size: 13px; color: var(--text-dim); margin-top: 2px; }
 
+/* 頂部導覽(2D / 3D 各頁共用) */
+.nav3d { display: flex; gap: 12px; font-size: 13px; }
+.nav3d a { color: var(--text-dim); text-decoration: none; }
+.nav3d a:hover, .nav3d a.active { color: var(--text); }
+
 .layout {
   display: grid;
   grid-template-columns: 240px 1fr 320px;
@@ -134,6 +139,8 @@ header p { font-size: 13px; color: var(--text-dim); margin-top: 2px; }
 @media (max-width: 820px) {
   header { padding: 14px 18px; flex-wrap: wrap; gap: 8px; }
   header h1 { font-size: 18px; }
+  .nav3d { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .nav3d a { flex: 0 0 auto; }
 
   .layout { grid-template-columns: 1fr; height: auto; }
 
