@@ -2,6 +2,11 @@
 
 一個網頁工具,用解剖學的方式呈現**每個重訓動作牽涉到哪些肌群**——選一個動作,人體圖上把主動肌、協同肌、穩定肌用三色標出;或反過來點某塊肌肉,查出所有練到它的動作。提供 **2D 示意圖** 與 **3D 解剖模型** 兩種檢視。
 
+### 🔗 線上 Demo:[sesgigikimo.github.io/gym-muscle](https://sesgigikimo.github.io/gym-muscle/)
+
+- 2D 雙向查詢:<https://sesgigikimo.github.io/gym-muscle/>
+- 全身 3D：<https://sesgigikimo.github.io/gym-muscle/fullbody3d.html>
+
 > 純前端、零建置(no build step):HTML + CSS + ES modules + Three.js。
 
 ## ✨ 功能
