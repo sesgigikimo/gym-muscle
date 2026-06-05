@@ -43,10 +43,14 @@ app.js  body.js  style.css   # 2D 版邏輯 / SVG 人體 / 樣式
 
 viewer3d.js        # 通用 3D 檢視器:initViewer(config) —— 旋轉 + 點擊高亮 + 接資料
 fullbody3d.*       # 全身(15 肌群)
-thigh3d.*          # 大腿 + 臀（可選股骨）
+shoulder3d.*       # 肩（三角肌/斜方肌,可選肩胛・鎖骨・肱骨)
+back3d.*           # 背（背闊肌/斜方肌/豎脊肌,可選脊椎)
+arm3d.*            # 手臂（二頭/三頭/前臂,可選肱骨・橈尺骨)
 waist3d.*          # 腰部（可選脊椎/骨盆）
 waistglute3d.*     # 腰臀後鏈（可選脊椎/骨盆）
-*.glb              # 3D 模型(由 Z-Anatomy 離線轉檔篩出,見下)
+thigh3d.*          # 大腿 + 臀（可選股骨）
+calf3d.*           # 小腿（腓腸肌/比目魚肌,可選脛・腓骨)
+*.glb              # 3D 模型(由 Z-Anatomy 離線轉檔篩出,見下;皆 Draco 壓縮)
 ```
 
 新增一個部位只需:篩出該部位的 `*.glb` + 複製一份約 10 行的設定檔(`*3d.js` / `*3d.html`)。
