@@ -4,7 +4,6 @@
 import { muscles, exercises, exercisesForMuscle, ROLE_LABEL } from './data.js';
 import { BODY_SVG } from './body.js';
 
-let currentView = 'front';        // 'front' | 'back'
 let selectedExercise = null;      // 目前選的動作物件
 let selectedMuscle = null;        // 目前選的肌群 id(肌群查動作模式)
 
@@ -13,10 +12,12 @@ const bodyContainer = $('#body-container');
 const panel = $('#panel');
 const exerciseList = $('#exercise-list');
 
-// ---------- 渲染人體 SVG ----------
+// ---------- 渲染人體 SVG(前 / 後視圖並排,不切換)----------
 function renderBody() {
-  bodyContainer.innerHTML = BODY_SVG[currentView];
-  // 綁定每塊肌肉的點擊事件
+  bodyContainer.innerHTML = `
+    <div class="figure"><span class="fig-cap">前面</span>${BODY_SVG.front}</div>
+    <div class="figure"><span class="fig-cap">背面</span>${BODY_SVG.back}</div>`;
+  // 綁定每塊肌肉的點擊事件(前後兩張圖的同名肌肉都會綁到)
   bodyContainer.querySelectorAll('.muscle').forEach(el => {
     el.addEventListener('click', () => selectMuscle(el.dataset.muscle));
     el.addEventListener('mouseenter', () => showMuscleTooltip(el.dataset.muscle));
@@ -54,15 +55,6 @@ function selectExercise(ex) {
   // 高亮清單項目
   exerciseList.querySelectorAll('.ex-item').forEach(el =>
     el.classList.toggle('active', el.dataset.id === ex.id));
-
-  // 自動切換到「有主動肌」的視圖,讓使用者第一眼就看到重點
-  const primaryMuscles = Object.entries(ex.targets)
-    .filter(([, role]) => role === 'primary')
-    .map(([id]) => id);
-  const primaryViews = primaryMuscles.flatMap(id => muscles[id]?.views || []);
-  if (primaryViews.length && !primaryViews.includes(currentView)) {
-    setView(primaryViews.includes('front') ? 'front' : 'back', false);
-  }
 
   applyHighlight();
   renderExercisePanel(ex);
@@ -135,15 +127,6 @@ function selectMuscle(muscleId) {
 
 const roleWeight = (role) => ({ primary: 0, synergist: 1, stabilizer: 2 }[role]);
 
-// ---------- 視圖切換 ----------
-function setView(view, reRender = true) {
-  currentView = view;
-  document.querySelectorAll('.view-btn').forEach(b =>
-    b.classList.toggle('active', b.dataset.view === view));
-  if (reRender) renderBody();
-  else { renderBody(); } // 重畫以套用新視圖
-}
-
 // ---------- Tooltip ----------
 let tooltip;
 function showMuscleTooltip(muscleId) {
@@ -183,8 +166,6 @@ function buildExerciseList() {
 
 // ---------- 初始化 ----------
 function init() {
-  document.querySelectorAll('.view-btn').forEach(b =>
-    b.addEventListener('click', () => setView(b.dataset.view)));
   buildExerciseList();
   renderBody();
   selectExercise(exercises[0]); // 預設選第一個動作,一進來就有東西看
