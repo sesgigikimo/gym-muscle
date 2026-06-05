@@ -89,8 +89,13 @@ export function initViewer(config) {
     model.scene.traverse((o) => {
       if (!o.isMesh) return;
       const id = findFlag(o, 'muscle');
-      if (id) { o.userData.muscle = id; o.material = muscleMat(); muscleMeshes.push(o); }
-      else o.visible = false;
+      if (id) {
+        o.userData.muscle = id;
+        const layer = findFlag(o, 'layer');
+        if (layer) o.userData.layer = layer;     // 'superficial' | 'deep'
+        o.material = muscleMat();
+        muscleMeshes.push(o);
+      } else o.visible = false;
     });
     content.add(model.scene);
 
@@ -103,6 +108,19 @@ export function initViewer(config) {
       if (toggle) {
         toggle.addEventListener('change', () => { bone.scene.visible = toggle.checked; });
         bone.scene.visible = toggle.checked;
+      }
+    }
+
+    // 層級切換(可選):勾選「深層」時隱藏表層肌肉,露出底下深層
+    if (config.layerToggle) {
+      const lt = document.getElementById(config.layerToggle);
+      if (lt) {
+        const applyLayer = () => {
+          for (const m of muscleMeshes)
+            if (m.userData.layer === 'superficial') m.visible = !lt.checked;
+        };
+        lt.addEventListener('change', applyLayer);
+        applyLayer();
       }
     }
 

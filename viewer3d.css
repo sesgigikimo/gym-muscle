@@ -12,6 +12,9 @@ body { overflow: hidden; }
 
 .view-opt { position: absolute; top: 14px; left: 16px; z-index: 5; display: flex; align-items: center; gap: 6px; font-size: 13px; color: var(--text); background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 6px 12px; cursor: pointer; user-select: none; }
 .view-opt input { cursor: pointer; }
+/* 多個開關堆疊用的容器 */
+.view-opts { position: absolute; top: 14px; left: 16px; z-index: 5; display: flex; flex-direction: column; gap: 8px; align-items: flex-start; }
+.view-opts .view-opt { position: static; top: auto; left: auto; }
 
 .loading { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: var(--text-dim); font-size: 14px; }
 
