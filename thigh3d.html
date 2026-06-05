@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>大腿肌群 3D MVP</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body { overflow: hidden; }
+    .layout3d { display: grid; grid-template-columns: 1fr 340px; height: calc(100vh - 64px); }
+    #canvas-wrap { position: relative; background: radial-gradient(circle at 50% 35%, #1c2630, #0d1217); }
+    #canvas-wrap canvas { display: block; }
+    .hud { position: absolute; left: 16px; bottom: 14px; font-size: 12px; color: var(--text-dim); line-height: 1.7; }
+    .hud kbd { background: var(--card); border: 1px solid var(--border); border-radius: 4px; padding: 1px 6px; }
+    .ex-strip { position: absolute; top: 14px; left: 50%; transform: translateX(-50%); display: flex; gap: 6px; flex-wrap: wrap; max-width: 88%; justify-content: center; }
+    .ex-strip button { font-size: 12px; padding: 6px 12px; background: var(--card); border: 1px solid var(--border); border-radius: 16px; color: var(--text); cursor: pointer; }
+    .ex-strip button.active { border-color: var(--primary); background: #2a333d; }
+    .legend3d { position: absolute; right: 16px; bottom: 14px; display: flex; gap: 14px; font-size: 12px; color: var(--text-dim); }
+    .legend3d i { width: 10px; height: 10px; border-radius: 50%; display: inline-block; margin-right: 5px; vertical-align: middle; }
+    .view-opt { position: absolute; top: 14px; left: 16px; z-index: 5; display: flex; align-items: center; gap: 6px; font-size: 13px; color: var(--text); background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 6px 12px; cursor: pointer; user-select: none; }
+    .view-opt input { cursor: pointer; }
+    .nav3d { display: flex; gap: 12px; font-size: 13px; }
+    .nav3d a { color: var(--text-dim); text-decoration: none; }
+    .nav3d a:hover, .nav3d a.active { color: var(--text); }
+  </style>
+</head>
+<body>
+  <header style="display:flex;justify-content:space-between;align-items:center;">
+    <div>
+      <h1>大腿肌群 3D 🦵</h1>
+      <p>拖曳旋轉 · 點肌肉看動作 · 選動作看肌群(模型:Z-Anatomy 解剖肌肉,雙側大腿+臀,可選股骨)</p>
+    </div>
+    <nav class="nav3d">
+      <a href="index.html">2D</a>
+      <a href="fullbody3d.html">全身</a>
+      <a href="thigh3d.html" class="active">大腿</a>
+      <a href="waist3d.html">腰部</a>
+      <a href="waistglute3d.html">腰臀</a>
+    </nav>
+  </header>
+
+  <div class="layout3d">
+    <div id="canvas-wrap">
+      <label class="view-opt"><input type="checkbox" id="femur-toggle"> 顯示股骨</label>
+      <div class="ex-strip" id="ex-strip"></div>
+      <div class="legend3d">
+        <span><i class="dot primary"></i>主動</span>
+        <span><i class="dot synergist"></i>協同</span>
+        <span><i class="dot stabilizer"></i>穩定</span>
+      </div>
+      <div class="hud">
+        <div><kbd>拖曳</kbd> 旋轉 · <kbd>滾輪</kbd> 縮放 · <kbd>右鍵拖</kbd> 平移</div>
+        <div style="margin-top:4px;opacity:.7">3D 模型:<a href="https://github.com/LluisV/Z-Anatomy" target="_blank" style="color:inherit">Z-Anatomy</a> · CC BY-SA 4.0</div>
+      </div>
+    </div>
+    <aside class="panel-wrap"><div id="panel"></div></aside>
+  </div>
+
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+      "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+    }
+  }
+  </script>
+  <script type="module" src="thigh3d.js"></script>
+</body>
+</html>

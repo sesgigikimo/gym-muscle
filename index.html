@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>重訓肌群解剖圖</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header style="display:flex;justify-content:space-between;align-items:center;">
+    <div>
+      <h1>重訓肌群解剖圖 💪</h1>
+      <p>選一個動作看牽涉的肌群,或點人體圖上的肌肉反查練到它的所有動作</p>
+    </div>
+    <nav style="display:flex;gap:14px;font-size:13px;">
+      <span style="color:var(--text-dim)">3D:</span>
+      <a href="fullbody3d.html" style="color:var(--text-dim);text-decoration:none">全身</a>
+      <a href="thigh3d.html" style="color:var(--text-dim);text-decoration:none">大腿</a>
+      <a href="waist3d.html" style="color:var(--text-dim);text-decoration:none">腰部</a>
+      <a href="waistglute3d.html" style="color:var(--text-dim);text-decoration:none">腰臀</a>
+    </nav>
+  </header>
+
+  <div class="layout">
+    <!-- 左:動作清單 -->
+    <aside class="sidebar">
+      <h3>動作</h3>
+      <div id="exercise-list"></div>
+    </aside>
+
+    <!-- 中:人體圖 -->
+    <main class="stage">
+      <div class="view-toggle">
+        <button class="view-btn active" data-view="front">前視圖</button>
+        <button class="view-btn" data-view="back">後視圖</button>
+      </div>
+      <div id="body-container"></div>
+      <div class="legend">
+        <span><i class="dot primary" style="width:10px;height:10px;border-radius:50%;margin-right:6px"></i>主動肌</span>
+        <span><i class="dot synergist" style="width:10px;height:10px;border-radius:50%;margin-right:6px"></i>協同肌</span>
+        <span><i class="dot stabilizer" style="width:10px;height:10px;border-radius:50%;margin-right:6px"></i>穩定肌</span>
+      </div>
+    </main>
+
+    <!-- 右:資訊面板 -->
+    <aside class="panel-wrap">
+      <div id="panel"></div>
+    </aside>
+  </div>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>

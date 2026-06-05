@@ -1,0 +1,34 @@
+Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
+
+Copyright (c) 2026 sesgigikimo
+
+This project is licensed under the Creative Commons Attribution-ShareAlike 4.0
+International License. You are free to share and adapt the material for any
+purpose, even commercially, under the following terms: you must give
+appropriate credit and distribute your contributions under the same license.
+
+Full license text: https://creativecommons.org/licenses/by-sa/4.0/legalcode
+Summary:           https://creativecommons.org/licenses/by-sa/4.0/
+
+------------------------------------------------------------------------------
+Third-party assets and their licenses
+------------------------------------------------------------------------------
+
+1. 3D anatomical models (*.glb)
+   Derived from Z-Anatomy — https://github.com/LluisV/Z-Anatomy
+   Copyright (c) Lluís Vinent
+   Licensed under CC BY-SA 4.0.
+   The .glb files in this repository are adaptations of Z-Anatomy meshes
+   (converted, filtered to selected muscles/bones, and Draco-compressed).
+   Because of the ShareAlike term, this entire project is released under
+   CC BY-SA 4.0.
+
+2. 2D SVG body paths (body.js)
+   Derived from react-native-body-highlighter
+   https://github.com/HichamELBSI/react-native-body-highlighter
+   Copyright (c) 2022 ELABBASSI Hicham
+   Licensed under the MIT License.
+
+3. Three.js (loaded at runtime via CDN)
+   Copyright (c) 2010-2024 three.js authors
+   Licensed under the MIT License.
