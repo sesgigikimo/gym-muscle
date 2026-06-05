@@ -142,17 +142,18 @@ header p { font-size: 13px; color: var(--text-dim); margin-top: 2px; }
   .nav3d { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; }
   .nav3d a { flex: 0 0 auto; }
 
-  .layout { grid-template-columns: 1fr; height: auto; }
+  /* 改為單欄直向堆疊(整頁可捲):動作(橫向捲)→ 人體圖 → 細部解說 */
+  .layout { display: block; height: auto; }
 
-  /* 人體圖優先顯示 */
-  .stage { order: -1; padding: 12px; }
-  .body-svg { max-height: 56vh; }
-
-  /* 動作清單改成橫向捲動的晶片列,省直向空間 */
-  .sidebar { display: flex; flex-direction: row; overflow-x: auto; gap: 8px; -webkit-overflow-scrolling: touch; }
+  /* 動作清單改成橫向捲動的晶片列 */
+  .sidebar { display: flex; flex-direction: row; overflow-x: auto; gap: 8px; -webkit-overflow-scrolling: touch; border-bottom: 1px solid var(--border); }
   .sidebar h3 { display: none; }
   .ex-item { flex: 0 0 auto; flex-direction: column; align-items: flex-start; gap: 2px; }
 
-  .sidebar, .panel-wrap { border: none; border-top: 1px solid var(--border); }
-  .panel-wrap { padding: 16px; }
+  /* 人體圖:給明確高度,否則 height:100% 在 auto 高度容器內會塌成 0(中間消失的原因) */
+  .stage { padding: 12px; overflow: visible; }
+  #body-container { width: 100%; }
+  .body-svg { height: 56vh; max-height: 56vh; width: auto; }
+
+  .panel-wrap { border-left: none; border-top: 1px solid var(--border); padding: 16px; }
 }
