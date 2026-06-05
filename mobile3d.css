@@ -18,12 +18,7 @@
   .nav3d { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; }
   .nav3d a { flex: 0 0 auto; padding: 4px 0; }
 
-  /* 動作快選列:改單行橫向捲動,不再 wrap 蓋住模型 */
-  .ex-strip {
-    max-width: 92%; flex-wrap: nowrap; overflow-x: auto;
-    justify-content: flex-start; -webkit-overflow-scrolling: touch; padding-bottom: 2px;
-  }
-  .ex-strip button { flex: 0 0 auto; }
+  /* 動作快選列已移到右側面板(桌機)/ 畫布下方(手機),會自然換行,不需特別處理 */
 
   /* 觸控沒有 hover,操作說明用不到;圖例縮小 */
   .hud { display: none; }

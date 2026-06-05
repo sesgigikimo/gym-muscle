@@ -1,0 +1,29 @@
+/* 3D 頁共用樣式(4 個部位頁共用;手機覆寫見 mobile3d.css) */
+body { overflow: hidden; }
+.layout3d { display: grid; grid-template-columns: 1fr 340px; height: calc(100vh - 64px); }
+#canvas-wrap { position: relative; background: radial-gradient(circle at 50% 35%, #1c2630, #0d1217); }
+#canvas-wrap canvas { display: block; }
+
+.hud { position: absolute; left: 16px; bottom: 14px; font-size: 12px; color: var(--text-dim); line-height: 1.7; }
+.hud kbd { background: var(--card); border: 1px solid var(--border); border-radius: 4px; padding: 1px 6px; }
+
+.legend3d { position: absolute; right: 16px; bottom: 14px; display: flex; gap: 14px; font-size: 12px; color: var(--text-dim); }
+.legend3d i { width: 10px; height: 10px; border-radius: 50%; display: inline-block; margin-right: 5px; vertical-align: middle; }
+
+.view-opt { position: absolute; top: 14px; left: 16px; z-index: 5; display: flex; align-items: center; gap: 6px; font-size: 13px; color: var(--text); background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 6px 12px; cursor: pointer; user-select: none; }
+.view-opt input { cursor: pointer; }
+
+.loading { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: var(--text-dim); font-size: 14px; }
+
+.nav3d { display: flex; gap: 12px; font-size: 13px; }
+.nav3d a { color: var(--text-dim); text-decoration: none; }
+.nav3d a:hover, .nav3d a.active { color: var(--text); }
+
+/* 右側面板:動作快選列(置頂)→ 資訊 */
+.panel-wrap { padding: 0; }
+.ex-strip { display: flex; flex-wrap: wrap; gap: 6px; padding: 14px 16px; border-bottom: 1px solid var(--border); }
+.ex-strip::before { content: "選動作"; flex: 0 0 100%; font-size: 12px; color: var(--text-dim); letter-spacing: 1px; margin-bottom: 2px; }
+.ex-strip button { font-size: 12px; padding: 6px 12px; background: var(--card); border: 1px solid var(--border); border-radius: 16px; color: var(--text); cursor: pointer; }
+.ex-strip button:hover { border-color: var(--text-dim); }
+.ex-strip button.active { border-color: var(--primary); background: #2a333d; }
+#panel { padding: 18px; }
