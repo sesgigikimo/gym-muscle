@@ -48,8 +48,8 @@ export function initViewer(config) {
   const controls = new OrbitControls(camera, renderer.domElement);
   controls.enableDamping = true;
   controls.target.set(0, 0, 0);
-  controls.minDistance = 4;
-  controls.maxDistance = 16;
+  controls.minDistance = 1.2;   // 可拉更近(放更大)
+  controls.maxDistance = 20;
 
   // 燈光
   scene.add(new THREE.HemisphereLight(0xbcd4ff, 0x202024, 0.9));
