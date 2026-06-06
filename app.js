@@ -164,11 +164,21 @@ function buildExerciseList() {
   });
 }
 
+// ---------- 進入時的提示(預設顯示全部肌肉,不自動選動作)----------
+function showIntro() {
+  panel.innerHTML = `
+    <div class="panel-head">
+      <h2>重訓肌群解剖圖</h2>
+      <p class="sub">目前顯示全部肌肉</p>
+    </div>
+    <p class="hint">💡 從左側選一個動作 → 看牽涉的肌群;<br>或點人體圖上的肌肉 → 反查練到它的所有動作。</p>`;
+}
+
 // ---------- 初始化 ----------
 function init() {
   buildExerciseList();
   renderBody();
-  selectExercise(exercises[0]); // 預設選第一個動作,一進來就有東西看
+  showIntro(); // 預設展示全部肌肉,不自動選動作
 }
 
 init();

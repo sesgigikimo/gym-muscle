@@ -133,9 +133,8 @@ export function initViewer(config) {
     else if (size.x >= size.y && size.x >= size.z) pivot.rotation.z = Math.PI / 2;
     pivot.scale.setScalar(5 / Math.max(size.x, size.y, size.z));
 
-    applyColors();
-    const def = regionExercises.find(e => e.id === config.defaultExerciseId) || regionExercises[0];
-    if (def) selectExercise(def);
+    applyColors();   // 預設:全部肌肉顯示原色,不自動選動作
+    showIntro();
   }).catch((err) => {
     console.error('模型載入失敗', err);
     panel.innerHTML = `<p class="hint">模型載入失敗,請確認 ${config.modelUrl} 與本頁同目錄。</p>`;
@@ -159,6 +158,13 @@ export function initViewer(config) {
       mesh.material.color.setHex(color);
       mesh.material.emissive.setHex(mesh === hovered ? 0x333333 : 0x000000);
     }
+  }
+
+  // 進入時的提示(未選任何動作/肌肉,全部肌肉顯示原色)
+  function showIntro() {
+    panel.innerHTML = `
+      <div class="panel-head"><h2>${REGION}</h2><p class="sub">目前顯示全部肌肉</p></div>
+      <p class="hint">💡 點 3D ${REGION}上的肌肉 → 反查練到它的動作;<br>或從上方「選動作」→ 看該動作牽涉哪些肌群。</p>`;
   }
 
   // ---------- 互動:Raycaster ----------
