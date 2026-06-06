@@ -6,5 +6,6 @@ initViewer({
   modelUrl: 'waistglute.glb',
   regionMuscles: ['lower_back', 'obliques', 'abs', 'glutes'],
   bone: { url: 'spine.glb', toggleId: 'bone-toggle' },
+  layerToggle: 'layer-toggle',
   defaultExerciseId: 'deadlift'
 });

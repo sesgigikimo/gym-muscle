@@ -5,5 +5,6 @@ initViewer({
   modelUrl: 'arm.glb',
   regionMuscles: ['biceps', 'triceps', 'forearm'],
   bone: { url: 'arm_bone.glb', toggleId: 'bone-toggle' },
+  layerToggle: 'layer-toggle',
   defaultExerciseId: 'biceps_curl'
 });

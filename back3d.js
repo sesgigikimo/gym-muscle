@@ -5,5 +5,6 @@ initViewer({
   modelUrl: 'back.glb',
   regionMuscles: ['lats', 'traps', 'lower_back'],
   bone: { url: 'spine.glb', toggleId: 'bone-toggle' },
+  layerToggle: 'layer-toggle',
   defaultExerciseId: 'pull_up'
 });

@@ -7,5 +7,6 @@ initViewer({
   regionMuscles: ['chest', 'deltoids', 'biceps', 'triceps', 'forearm', 'abs', 'obliques',
                   'traps', 'lats', 'lower_back', 'glutes', 'quads', 'hamstrings', 'calves', 'adductors'],
   bone: null,
+  layerToggle: 'layer-toggle',
   defaultExerciseId: 'deadlift'
 });

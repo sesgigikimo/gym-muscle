@@ -5,5 +5,6 @@ initViewer({
   modelUrl: 'calf.glb',
   regionMuscles: ['calves'],
   bone: { url: 'calf_bone.glb', toggleId: 'bone-toggle' },
+  layerToggle: 'layer-toggle',
   defaultExerciseId: 'calf_raise'
 });
