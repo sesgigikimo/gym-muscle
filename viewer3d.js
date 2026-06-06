@@ -81,10 +81,7 @@ export function initViewer(config) {
   pivot.add(content);
   scene.add(pivot);
 
-  const jobs = [loader.loadAsync(config.modelUrl)];
-  if (config.bone) jobs.push(loader.loadAsync(config.bone.url));
-
-  Promise.all(jobs).then(([model, bone]) => {
+  loader.loadAsync(config.modelUrl).then((model) => {
     // 肌肉
     model.scene.traverse((o) => {
       if (!o.isMesh) return;
@@ -99,15 +96,26 @@ export function initViewer(config) {
     });
     content.add(model.scene);
 
-    // 骨架(可選)
-    if (bone) {
-      bone.scene.traverse((o) => { if (o.isMesh) o.material = boneMat(); });
-      bone.scene.visible = false;
-      content.add(bone.scene);
+    // 骨架(可選):lazy load —— 第一次勾選才下載(骨架檔較大,不拖累初始載入)
+    if (config.bone) {
       const toggle = document.getElementById(config.bone.toggleId);
       if (toggle) {
-        toggle.addEventListener('change', () => { bone.scene.visible = toggle.checked; });
-        bone.scene.visible = toggle.checked;
+        let boneScene = null, loading = false;
+        toggle.addEventListener('change', async () => {
+          if (toggle.checked && !boneScene && !loading) {
+            loading = true;
+            toggle.parentElement && toggle.parentElement.classList.add('loading-opt');
+            try {
+              const g = await loader.loadAsync(config.bone.url);
+              boneScene = g.scene;
+              boneScene.traverse((o) => { if (o.isMesh) o.material = boneMat(); });
+              content.add(boneScene);   // 與肌肉同 content,自動套用相同置中/縮放 → 對齊
+            } catch (e) { console.error('骨架載入失敗', e); }
+            toggle.parentElement && toggle.parentElement.classList.remove('loading-opt');
+            loading = false;
+          }
+          if (boneScene) boneScene.visible = toggle.checked;
+        });
       }
     }
 

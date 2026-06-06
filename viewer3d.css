@@ -15,6 +15,8 @@ body { overflow: hidden; }
 /* 多個開關堆疊用的容器 */
 .view-opts { position: absolute; top: 14px; left: 16px; z-index: 5; display: flex; flex-direction: column; gap: 8px; align-items: flex-start; }
 .view-opts .view-opt { position: static; top: auto; left: auto; }
+.view-opt.loading-opt { opacity: .6; }
+.view-opt.loading-opt::after { content: '載入中…'; font-size: 11px; color: var(--text-dim); margin-left: 2px; }
 
 .loading { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: var(--text-dim); font-size: 14px; }
 

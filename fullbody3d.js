@@ -6,7 +6,7 @@ initViewer({
   modelUrl: 'fullbody.glb',   // Draco 壓縮,15 肌群皆已標 id
   regionMuscles: ['chest', 'deltoids', 'biceps', 'triceps', 'forearm', 'abs', 'obliques',
                   'traps', 'lats', 'lower_back', 'glutes', 'quads', 'hamstrings', 'calves', 'adductors'],
-  bone: null,
+  bone: { url: 'skeleton.glb', toggleId: 'bone-toggle' },   // 全身骨架(lazy load)
   layerToggle: 'layer-toggle',
   defaultExerciseId: 'deadlift'
 });
