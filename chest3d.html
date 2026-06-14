@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>小腿肌群 3D</title>
+  <title>胸部肌群 3D</title>
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="viewer3d.css">
   <link rel="stylesheet" href="mobile3d.css">
@@ -11,28 +11,27 @@
 <body>
   <header style="display:flex;justify-content:space-between;align-items:center;">
     <div>
-      <h1>小腿肌群 3D 🦵</h1>
-      <p>拖曳旋轉 · 點肌肉看動作 · 選動作看肌群(腓腸肌/比目魚肌,可選脛・腓骨)</p>
+      <h1>胸部肌群 3D 🫀</h1>
+      <p>拖曳旋轉 · 點肌肉看動作 · 選動作看肌群(胸大肌,可選胸廓・鎖骨)</p>
     </div>
     <nav class="nav3d">
       <a href="index.html">2D</a>
       <a href="fullbody3d.html">全身</a>
       <a href="shoulder3d.html">肩</a>
-      <a href="chest3d.html">胸</a>
+      <a href="chest3d.html" class="active">胸</a>
       <a href="back3d.html">背</a>
       <a href="arm3d.html">手臂</a>
       <a href="waist3d.html">腰部</a>
       <a href="waistglute3d.html">腰臀</a>
       <a href="thigh3d.html">大腿</a>
-      <a href="calf3d.html" class="active">小腿</a>
+      <a href="calf3d.html">小腿</a>
     </nav>
   </header>
 
   <div class="layout3d">
     <div id="canvas-wrap">
       <div class="view-opts">
-        <label class="view-opt"><input type="checkbox" id="layer-toggle"> 深層肌(剝除外層)</label>
-        <label class="view-opt"><input type="checkbox" id="bone-toggle"> 顯示脛/腓骨</label>
+        <label class="view-opt"><input type="checkbox" id="bone-toggle"> 顯示胸廓/鎖骨</label>
       </div>
       <div class="legend3d">
         <span><i class="dot primary"></i>主動</span>
@@ -58,6 +57,6 @@
     }
   }
   </script>
-  <script type="module" src="calf3d.js"></script>
+  <script type="module" src="chest3d.js"></script>
 </body>
 </html>
